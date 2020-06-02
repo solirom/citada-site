@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Corpus de citate</title>
+        <meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>	
+		<meta name="description" content="corpus citate"/>
+		<meta name="author" content="Claudius Teodorescu"/>        
+        
+		<!-- start favicon -->
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="static/images/static/images/favicon/apple-touch-icon-57x57.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/images/favicon/apple-touch-icon-114x114.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/images/favicon/apple-touch-icon-72x72.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="static/images/favicon/apple-touch-icon-144x144.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="static/images/favicon/apple-touch-icon-60x60.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="static/images/favicon/apple-touch-icon-120x120.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="static/images/favicon/apple-touch-icon-76x76.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="static/images/favicon/apple-touch-icon-152x152.png"/>
+        <link rel="icon" type="image/png" href="static/images/favicon/favicon-196x196.png" sizes="196x196"/>
+        <link rel="icon" type="image/png" href="static/images/favicon/favicon-96x96.png" sizes="96x96"/>
+        <link rel="icon" type="image/png" href="static/images/favicon/favicon-32x32.png" sizes="32x32"/>
+        <link rel="icon" type="image/png" href="static/images/favicon/favicon-16x16.png" sizes="16x16"/>
+        <link rel="icon" type="image/png" href="static/images/favicon/favicon-128.png" sizes="128x128"/>
+        <meta name="application-name" content="Dicționarul limbii române"/>
+        <meta name="msapplication-TileColor" content="#FFFFFF"/>
+        <meta name="msapplication-TileImage" content="mstile-144x144.png"/>
+        <meta name="msapplication-square70x70logo" content="mstile-70x70.png"/>
+        <meta name="msapplication-square150x150logo" content="mstile-150x150.png"/>
+        <meta name="msapplication-wide310x150logo" content="mstile-310x150.png"/>
+        <meta name="msapplication-square310x310logo" content="mstile-310x310.png"/>
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">/**/</script>
+        <link rel="stylesheet" href="static/css/index.css" />  
+        <script type="text/javascript" charset="utf-8" src="static/js/index.js" defer="true">/**/</script>   
+
+        <!-- Font Awesome -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/> 
+		
+		<!-- clipboard.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js">/**/</script>		
+    </head>
+    <body>
+        <h2>Corpus de citate</h2>
+        <p>Căutarea se face cu diacritice.</p>
+        <p>Dacă se apasă pe butonul <i class="far fa-clipboard"></i> din stânga citatului, acesta va fi copiat automat și va putea fi inserat în documentul word în care lucrați.</p>
+        <p>Deocamdată, baza de date cuprinde doar citate pentru cuvintele-titlu de la litera A. Pe măsură ce vor fi disponibile citate pentru alte cuvinte-titlu, vor fi integrate și acelea.</p>
+        <div id="simple-search-container">
+            <input id="search-string" type="text"/>
+            <button id="search-button">&#xf002;</button>
+        </div>
+        <div id="search-result">
+            <table class="report">
+                <thead>
+                    <tr>
+                        <th>Nr. crt.</th>
+                        <th>Cuvânt-titlu</th>
+                        <th>Citat</th>
+                        <th>Sursă</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        for $selected-quotation at $i in $selected-quotations
+                        let $quotation-id := "dlri-quotation-" || $i
+                        
+                        return
+                            <tr>
+                                <td>{$i}</td>
+                                <td>{$selected-quotation/tei:orth/string()}</td>
+                                <td>
+                                    <button class="btn" title="Copiere" data-clipboard-target="#{$quotation-id}"><i class="far fa-clipboard"></i></button>
+                                    <span id="{$quotation-id}">{$selected-quotation/tei:quote/string()}</span>
+                                </td>
+                                <td>{$selected-quotation/tei:bibl/string()}</td>
+                            </tr>
+                    }                    
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

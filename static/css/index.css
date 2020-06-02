@@ -1,0 +1,39 @@
+table.report {
+  border-collapse: collapse;
+  width: 70%;
+}
+table.report th {
+  background: #ccc;
+}
+
+table.report th, table.report td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+table.report td:nth-child(1) {
+    width: 5%;
+}
+
+table.report td:nth-child(3) {
+    width: 35%;
+}
+
+table.report td:nth-child(3) > * {
+    display: inline;
+}
+
+table.report td:nth-child(3) > button {
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+table.report td:nth-child(3) > button:focus {
+    border: none;
+}
+
+#simple-search-container button {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;                
+}

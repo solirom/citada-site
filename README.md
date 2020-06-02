@@ -1,2 +1,0 @@
-# citation-corpus-backend
-
