@@ -3,12 +3,12 @@
 
 current_dir=$(pwd)
 echo $current_dir
-xml_files_dir=../alloting-citations/output/
-json_files_dir=./json
+xml_files_dir=../../../../tmp/alloting-citations-output/
+json_files_dir=../../../../tmp/generate-partial-index/json
 index_name="citation-corpus"
 
 rm -rf "$json_files_dir"
-mkdir "$json_files_dir"
+mkdir -p "$json_files_dir"
 time java -jar /home/claudius/workspace/software/saxon-he/saxon9he.jar -s:"$xml_files_dir" -xsl:"generate-index.xsl" -o:"$json_files_dir/"
 
 cd "$current_dir"
