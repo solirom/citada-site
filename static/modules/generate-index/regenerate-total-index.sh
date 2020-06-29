@@ -2,7 +2,7 @@
 
 current_dir=$(pwd)
 echo $current_dir
-xml_files_dir=/var/web/solirom-site/modules/citations/citation-corpus-data/files/xml
+xml_files_dir=/var/web/solirom-admin-site/modules/citations/citation-corpus-data/files/xml
 index_name="citation-corpus"
 json_files_dir="$current_dir"/json
 
@@ -16,3 +16,4 @@ do
     base_name=$(basename "$file_name" | cut -d. -f1)
     curl -f -X PUT http://localhost:8095/api/$index_name/$base_name -d @$file_name
 done
+

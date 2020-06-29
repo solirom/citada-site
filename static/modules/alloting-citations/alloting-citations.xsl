@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tei="http://www.tei-c.org/ns/1.0" version="3.0" exclude-result-prefixes="tei">
     <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="true"/>
-    <xsl:variable name="numberOfEntries">620</xsl:variable>
-    <xsl:variable name="redactorId">timea.bartha</xsl:variable>
+    <xsl:param name="numberOfEntries"/>
+    <xsl:param name="redactorId"/>
     <xsl:variable name="inputCollection">/home/claudius/workspace/repositories/git/citation-corpus-data/files/xml</xsl:variable>
     
     <xsl:variable name="entries" select="collection(concat($inputCollection, '?select=*.xml'))"/>

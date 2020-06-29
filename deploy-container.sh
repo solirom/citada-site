@@ -3,7 +3,7 @@
 
 project_name=${PWD##*/}
 port=7002
-data_git_url=ssh://claudius@188.212.37.221/home/git/solirom/citation-corpus-data.git
+data_git_url=ssh://claudius@188.212.37.221/home/git/repositories/solirom/citation-corpus-data.git
 
 output_dir=./tmp/html/
 
